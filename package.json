@@ -3,15 +3,25 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/demo-components.es.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "peerDependencies": {
     "lit": "^3.3.1"
   },
   "devDependencies": {
+    "lit": "^3.3.1",
     "vite": "npm:rolldown-vite@7.2.5"
   },
   "overrides": {
