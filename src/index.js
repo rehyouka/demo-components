@@ -1,0 +1,1 @@
+export { DemoA } from './components/demo-a.js';

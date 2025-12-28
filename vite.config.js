@@ -18,12 +18,14 @@ export default defineConfig({
                                     rollupOptions: {
                                         external: [
                                             'lit',
-                                            'lit/directives/unsafe-html.js'
+                                            'lit/directives/unsafe-html.js',
+                                            'lit/directives/class-map.js'
                                         ],
                                         output: {
                                             globals: {
                                                 lit: 'Lit',
-                                                'lit/directives/unsafe-html.js': 'Lit'
+                                                'lit/directives/unsafe-html.js': 'Lit',
+                                                'lit/directives/class-map.js': 'Lit'
                                             }
                                         }
                                     },
