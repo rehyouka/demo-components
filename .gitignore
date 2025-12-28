@@ -11,3 +11,6 @@ node_modules
 
 ### vite ###
 dist/
+
+### build outputs ###
+src/icons.js

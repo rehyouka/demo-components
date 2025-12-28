@@ -1,2 +1,7 @@
+// functions
+export { getIcon } from './icons.js'
+
+// components
 export { DemoA } from './components/demo-a.js';
 export { DemoButton } from './components/demo-button.js';
+export { DemoIcon } from './components/demo-icon.js';
