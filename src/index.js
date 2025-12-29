@@ -11,3 +11,4 @@ export { DemoSignboard } from './components/demo-signboard.js';
 export { DemoImg } from './components/demo-img.js';
 export { DemoFooter } from './components/demo-footer.js';
 export { DemoReference } from './components/demo-reference.js';
+export { DemoBusinessCard } from './components/demo-business-card.js';
