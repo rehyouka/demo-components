@@ -32,7 +32,7 @@ export class DemoIcon extends EzComponent {
         return unsafeHTML(this._svg);
     }
 
-    async updated(changedProperties) {
+    willUpdate(changedProperties) {
         if (changedProperties.has('category') ||
             changedProperties.has('name') ||
             changedProperties.has('filled')
