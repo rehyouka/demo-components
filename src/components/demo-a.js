@@ -43,7 +43,7 @@ export class DemoA extends EzComponent {
                 height: 0.1em;
                 background-color: var(--a-color-deselect);
             }
-            a.underline:hover::after {
+            a.underline.smooth:hover::after {
                 width: 100%;
                 background-color: var(--a-color-select);
             }
