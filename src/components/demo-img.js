@@ -29,9 +29,6 @@ export class DemoImg extends EzComponent{
             .filtered:hover {
                 filter: grayscale(0%);
             }
-            .clickable:hover {
-                cursor: pointer;
-            }
         `,
     ];
     static properties = {
