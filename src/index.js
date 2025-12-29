@@ -8,3 +8,4 @@ export { DemoIcon } from './components/demo-icon.js';
 export { DemoCare } from './components/demo-care.js';
 export { DemoChannels } from './components/demo-channels.js';
 export { DemoSignboard } from './components/demo-signboard.js';
+export { DemoImg } from './components/demo-img.js';
