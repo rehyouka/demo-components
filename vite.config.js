@@ -109,14 +109,16 @@ export default defineConfig({
                                             'lit',
                                             'lit/directives/unsafe-html.js',
                                             'lit/directives/class-map.js',
-                                            'lit/directives/style-map.js'
+                                            'lit/directives/style-map.js',
+                                            'lit/directives/repeat.js'
                                         ],
                                         output: {
                                             globals: {
                                                 lit: 'Lit',
                                                 'lit/directives/unsafe-html.js': 'Lit',
                                                 'lit/directives/class-map.js': 'Lit',
-                                                'lit/directives/style-map.js': 'Lit'
+                                                'lit/directives/style-map.js': 'Lit',
+                                                'lit/directives/repeat.js': 'Lit'
                                             }
                                         }
                                     },
