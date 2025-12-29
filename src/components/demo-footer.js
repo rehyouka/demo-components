@@ -7,6 +7,9 @@ export class DemoFooter extends ConfigurableComponent {
     static styles = [
         ... ConfigurableComponent.styles,
         css`
+            :host {
+                display: block;
+            }
             #container {
                 display: flex;
                 align-items: center;
