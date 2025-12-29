@@ -8,6 +8,9 @@ export class DemoButton extends MultiMediaComponent {
         css`
             :host {
                 display: inline-block;
+
+                --btn-color-light: var(--btn-color-light-x, inherit);
+                --btn-color-dark: var(--btn-color-dark-x, inherit);
             }
 
             :host, #container {
@@ -24,9 +27,6 @@ export class DemoButton extends MultiMediaComponent {
                 user-select: none;
                 -webkit-user-select: none;
                 -webkit-tap-highlight-color: transparent;
-
-                --btn-color-light: var(--btn-color-light-x, inherit);
-                --btn-color-dark: var(--btn-color-dark-x, inherit);
 
                 --btn-color-bg: var(--btn-color-light);
                 --btn-color-txt: var(--btn-color-dark);

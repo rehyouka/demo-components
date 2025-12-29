@@ -8,11 +8,11 @@ export class DemoA extends EzComponent {
         css`
             :host {
                 display: inline-block;
-            }
-            a {
+
                 --a-color-deselect: var(--a-color-deselect-x, inherit);
                 --a-color-select: var(--a-color-select-x, inherit);
-
+            }
+            a {
                 position: relative;
                 color: var(--a-color-deselect);
                 text-decoration: none;
