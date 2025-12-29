@@ -1,5 +1,19 @@
 import { LitElement, css } from 'lit';
 
+async function fromJson(name) {
+    if (name?.length) {
+        try {
+            const res = await fetch(`/configs/${name}.json`);
+            if (res?.ok) {
+                return await res.json();
+            }
+        } catch (err) {
+            console.error(`Fails to load .json config file: ${name}`, err);
+        }
+    }
+    return [];
+}
+
 export class EzComponent extends LitElement {
     static styles = [
         css`
@@ -43,14 +57,12 @@ export class ConfigurableComponent extends EzComponent {
         this.configName = '';
         this._config = [];
     }
-/*
     async updated(changedProperties) {
         if (changedProperties.has('configName')) {
             const config = await fromJson(this.configName);
             if (config?.length) this._config = config;
         }
     }
-*/
 }
 
 export class MultiMediaComponent extends ConfigurableComponent {
