@@ -14,16 +14,22 @@ export class DemoA extends EzComponent {
             }
             a {
                 position: relative;
-                color: var(--a-color-deselect);
-                text-decoration: none;
             }
+            a,
             a:hover,
             a:active,
             a:visited,
-            a:focus {
-                color: inherit;
+            a:focus
+            {
                 text-decoration: none;
                 outline: none;
+            }
+            a,
+            a:active,
+            a:visited,
+            a:focus
+            {
+                color: var(--a-color-deselect);
             }
             a:hover {
                 color: var(--a-color-select-x);
@@ -31,7 +37,7 @@ export class DemoA extends EzComponent {
             a.smooth:hover {
                 transition: color 0.3s ease;
             }
-            a.underline:not(.smooth):hover {
+            a.underline:not(.smooth):hover, a.underlined {
                 text-decoration-line: underline;
             }
             a.underline::after {
@@ -55,6 +61,7 @@ export class DemoA extends EzComponent {
     static properties = {
         href: {},
         underline: { type: Boolean, },
+        underlined: { type: Boolean, },
         smooth: { type: Boolean, },
         newTab: { attribute: 'new-tab', type: Boolean, },
     };
@@ -62,12 +69,14 @@ export class DemoA extends EzComponent {
         super('demo-a');
         this.href = 'javascript:void(0)';
         this.underline = false;
+        this.underlined = false;
         this.smooth = false;
         this.newTab = false;
     }
     render() {
         const aClassMap = {
             underline: this.underline,
+            underlined: this.underlined,
             smooth: this.smooth,
         };
         return this.newTab
