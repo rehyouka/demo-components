@@ -53,12 +53,12 @@ export class DemoButton extends MultiMediaComponent {
                 border-radius: 1.2rem;
             }
 
-            .filled, button.hoverable:hover, button:not(.hoverable).pressable {
+            .filled, button.color-flippable.hoverable:hover, button:not(.hoverable).color-flippable.pressable {
                 --btn-color-bg: var(--btn-color-dark);
                 --btn-color-txt: var(--btn-color-light);
             }
 
-            button.hoverable.filled:hover, button:not(.hoverable).pressable.filled {
+            button.color-flippable.hoverable.filled:hover, button:not(.hoverable).color-flippable.pressable.filled {
                 --btn-color-bg: var(--btn-color-light);
                 --btn-color-txt: var(--btn-color-dark);
             }
@@ -70,6 +70,7 @@ export class DemoButton extends MultiMediaComponent {
         bordering: {type: Boolean,},
         rounded: {type: Boolean,},
         filled: {type: Boolean,},
+        colorFlippable: {type: Boolean,attribute:'color-flippable',}, 
     };
     _buttonElement;
 
@@ -79,6 +80,7 @@ export class DemoButton extends MultiMediaComponent {
         this.bordering = false;
         this.rounded = false;
         this.filled = false;
+        this.colorFlippable = false;
     }
 
     render() {
@@ -88,6 +90,7 @@ export class DemoButton extends MultiMediaComponent {
             bordering: this.bordering,
             rounded: this.rounded,
             filled: this.filled,
+            'color-flippable': this.colorFlippable,
             hoverable: this._hoverSupport,
         };
         return html`
