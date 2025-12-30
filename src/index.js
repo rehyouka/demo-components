@@ -15,3 +15,4 @@ export { DemoBusinessCard } from './components/demo-business-card.js';
 export { DemoNotice } from './components/demo-notice.js';
 export { DemoQ } from './components/demo-q.js';
 export { DemoLayout } from './components/demo-layout.js';
+export { DemoGallery } from './components/demo-gallery.js';
