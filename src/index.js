@@ -1,5 +1,9 @@
 // functions
 export { getIcon } from './icons.js'
+export { isCookieSettingsEnabled } from './components/demo-cookie.js';
+
+// styles
+export { backdropStyles } from './styles/backdrop.js';
 
 // components
 export { DemoA } from './components/demo-a.js';
@@ -16,3 +20,4 @@ export { DemoNotice } from './components/demo-notice.js';
 export { DemoQ } from './components/demo-q.js';
 export { DemoLayout } from './components/demo-layout.js';
 export { DemoGallery } from './components/demo-gallery.js';
+export { DemoCookie} from './components/demo-cookie.js';
