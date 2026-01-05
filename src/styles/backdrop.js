@@ -21,6 +21,7 @@ export const backdropStyles = css`
         opacity: 1;
     }
     .z-idx-backdrop-above {
+        position: relative;
         z-index: 26;
     }
 `;

@@ -35,7 +35,6 @@ export class DemoCookie extends ConfigurableComponent {
                 padding: 1em;
                 transition: background-color 0.3s ease, color 0.3s ease;
                 position: relative;
-                z-index: 999;
             }
             :host(.bookmark) > #container {
                 display: flex;
@@ -73,7 +72,7 @@ export class DemoCookie extends ConfigurableComponent {
         const enabled = isCookieSettingsEnabled();
         this.classList.toggle('bookmark', !this._expanded);
         return html`
-            <div id="container">
+            <div id="container" class="z-idx-backdrop-above">
                 ${ this._expanded
                     ? 
                         html`

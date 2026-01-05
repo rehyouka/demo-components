@@ -21,3 +21,4 @@ export { DemoQ } from './components/demo-q.js';
 export { DemoLayout } from './components/demo-layout.js';
 export { DemoGallery } from './components/demo-gallery.js';
 export { DemoCookie} from './components/demo-cookie.js';
+export { DemoNavi } from './components/demo-navi.js';
