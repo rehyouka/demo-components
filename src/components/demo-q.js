@@ -25,7 +25,6 @@ export class DemoQ extends EzComponent {
             p {
                 font-weight: 800;
                 font-size: 1.4em;
-                font-family: sans-serif;
                 line-height: 1.4em;
                 text-align: center;
                 text-rendering: optimizeLegibility;
@@ -39,6 +38,10 @@ export class DemoQ extends EzComponent {
                 width: 100%;
                 font-size: 1em;
                 color: var(--q-color-author);
+            }
+            @media (max-width: 768px) {
+                p { font-size: 1.1em; }
+                i { font-size: 0.7em; }
             }
         `,
     ];
