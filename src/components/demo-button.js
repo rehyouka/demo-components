@@ -19,7 +19,7 @@ export class DemoButton extends MultiMediaComponent {
             }
 
             button {
-                padding: 0.4em 0.8rem;
+                padding: 0.4em 0.8em;
 
                 transition: background-color 0.3s ease, color 0.3s ease;
                 font-size: inherit;
@@ -38,7 +38,7 @@ export class DemoButton extends MultiMediaComponent {
 
             .bordered, .bordering {
                 border-style: solid;
-                border-width: 0.25rem;
+                border-width: 0.25em;
             }
 
             .bordering {
@@ -50,7 +50,7 @@ export class DemoButton extends MultiMediaComponent {
             }
 
             .rounded {
-                border-radius: 1.2rem;
+                border-radius: 1.2em;
             }
 
             .filled, button.color-flippable.hoverable:hover, button:not(.hoverable).color-flippable.pressable {
@@ -85,6 +85,7 @@ export class DemoButton extends MultiMediaComponent {
 
     render() {
         const aClassMap = {
+            'inherit-txt': true,
             clickable: true,
             bordered: this.bordered,
             bordering: this.bordering,
