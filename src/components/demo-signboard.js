@@ -33,8 +33,10 @@ export class DemoSignboard extends ConfigurableComponent {
                 justify-content: center;
             }
             #slogans > h1 {
-                font-family: sans-serif;
                 font-size: 4.5em;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                white-space: normal;
             }
             #buttons {
                 gap: 2em;
@@ -50,6 +52,11 @@ export class DemoSignboard extends ConfigurableComponent {
             @keyframes blink {
                 0%, 50% { opacity: 1; }
                 51%, 100% { opacity: 0; }
+            }
+            @media (max-width: 768px) {
+                #slogans > h1 { font-size: 2.8em; }
+                #buttons > demo-button { font-size: 1.1em; }
+                #buttons { gap: 1em; }
             }
         `
     ];
@@ -69,8 +76,8 @@ export class DemoSignboard extends ConfigurableComponent {
                     <h1 id="slogan-intro"><b>${this._config[0]?.sloganIntro}</b> <span>_</span></h1>
                 </div>
                 <div id="buttons" class="centered-flex">
-                    <demo-button id="button-start" bordered rounded>${this._config[0]?.buttonStart}</demo-button>
-                    <demo-button id="button-more" bordered rounded filled>${this._config[0]?.buttonMore}</demo-button>
+                    <demo-button id="button-start" bordered rounded color-flippable>${this._config[0]?.buttonStart}</demo-button>
+                    <demo-button id="button-more" bordered rounded filled color-flippable>${this._config[0]?.buttonMore}</demo-button>
                 </div>
             </div>
         `;
