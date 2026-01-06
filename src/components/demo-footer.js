@@ -19,8 +19,17 @@ export class DemoFooter extends ConfigurableComponent {
                 list-style: none;
                 display: flex;
                 gap: 1em;
-                font-size: 1em;
                 align-items: center;
+            }
+            @media (max-width: 768px) {
+                #container {
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 0.6em;
+                }
+                ul {
+                    gap: 0.8em;
+                }
             }
         `,
     ];
