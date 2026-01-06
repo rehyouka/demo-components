@@ -9,6 +9,12 @@ export class DemoNotice extends ConfigurableComponent {
             :host {
                 display: block;
             }
+            #container {
+                padding: 0.5em 1em;
+            }
+            demo-a {
+                font-size: 0.8em;
+            }
         `,
     ];
     static properties = {
@@ -19,12 +25,8 @@ export class DemoNotice extends ConfigurableComponent {
     }
     render() {
         return html`
-            <div id="container">
-                <div id="content" class="centered-flex">
-                    <slot>
-                        <b><demo-a href="${this._config[0]?.link}" new-tab>${this._config[0]?.desc}</demo-a></b>
-                    </slot>
-                </div>
+            <div id="container" class="centered-flex">
+                <b><demo-a href="${this._config[0]?.link}" new-tab underline>${this._config[0]?.desc}</demo-a></b>
             </div>
         `;
     }
