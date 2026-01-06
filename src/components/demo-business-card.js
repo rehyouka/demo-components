@@ -26,6 +26,8 @@ export class DemoBusinessCard extends EzComponent {
                 height: 100%;
             }
             #avatar {
+                width: 4em;
+                height: 4em;
                 border-radius: 50%;
                 overflow: hidden;
             }
@@ -45,6 +47,11 @@ export class DemoBusinessCard extends EzComponent {
             }
             #sub-title {
                 color: var(--business-card-color-sub-title);
+            }
+            @media (max-width: 768px) {
+                #avatar { width: 3.3em; height: 3.3em; }
+                #title { font-size: 0.8em; }
+                #sub-title, demo-a { font-size: 0.6em; }
             }
         `,
     ];
