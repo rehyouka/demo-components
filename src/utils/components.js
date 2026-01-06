@@ -17,6 +17,26 @@ async function fromJson(name) {
 export class EzComponent extends LitElement {
     static styles = [
         css`
+            :host {
+                font-size: inherit;
+                font-family: inherit;
+                /* line-height: inherit; */
+                /* font-weight: inherit; */
+                letter-spacing: inherit;
+                word-spacing: inherit;
+
+                /* color: inherit; */
+                /* text-align: inherit; */
+
+                /* cursor: inherit; */
+                /* user-select: inherit; */
+            }
+            .inherit-txt {
+                font-size: inherit;
+                font-family: inherit;
+                letter-spacing: inherit;
+                word-spacing: inherit;
+            }
             * {
                 box-sizing: border-box;
                 margin: 0;
