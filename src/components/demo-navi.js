@@ -15,7 +15,6 @@ export class DemoNavi extends MultiMediaComponent {
                 top: 0;
                 position: fixed;
                 width: 100vw;
-                font-family: sans-serif;
 
                 --navi-color-txt: var(--navi-color-txt-x, inherit);
                 --navi-color-txt-select: var(--navi-color-txt-select-x, inherit);
@@ -28,6 +27,8 @@ export class DemoNavi extends MultiMediaComponent {
                 justify-content: center;
                 flex-direction: column;
                 align-items: center;
+                max-height: 100vh;
+                overflow: hidden;
 
                 color: var(--navi-color-txt);
                 background-color: var(--navi-color-bg);
@@ -41,7 +42,15 @@ export class DemoNavi extends MultiMediaComponent {
                 max-width: var(--navi-width-max);
             }
             #body {
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
                 transition: height 0.3s ease;
+            }
+            .full-height {
+                height: 100vh;
+            }
+            .rest {
+                flex: 1;
             }
             .visible {
                 visibility: visible;
@@ -50,15 +59,6 @@ export class DemoNavi extends MultiMediaComponent {
             .hidden {
                 visibility: hidden;
                 opacity: 0;
-            }
-            .transitional {
-                transition:
-                        visibility 0.3s ease,
-                        opacity 0.3s ease,
-                        background-color 0.3s ease,
-                        color 0.3s ease,
-                        height 0.3s ease
-                ;
             }
         `,
         css`
@@ -106,8 +106,7 @@ export class DemoNavi extends MultiMediaComponent {
                 width: 100%;
             }
             demo-icon.icon-bar {
-                width: 2em;
-                height: 2em;
+                width: 1em;
             }
         `,
         css`
@@ -136,7 +135,8 @@ export class DemoNavi extends MultiMediaComponent {
             .list {
                 display: flex;
                 flex-direction: column;
-                gap: 4em;
+                gap: 1em;
+                padding: 1em 0;
             }
             .list-item {
                 color: var(--navi-color-txt);
@@ -144,14 +144,15 @@ export class DemoNavi extends MultiMediaComponent {
             .sub-list {
                 display: flex;
                 flex-direction: column;
-                gap: 1em;
+                gap: 0.1em;
+                padding: 0.5em 0;
             }
             .sub-list > p {
-                font-size: 1.4em;
+                font-size: 1em;
                 color: var(--navi-color-txt-title);
             }
             .sub-list > demo-a {
-                font-size: xx-large;
+                font-size: 1.4em;
                 font-weight: bolder;
             }
         `,
@@ -182,7 +183,7 @@ export class DemoNavi extends MultiMediaComponent {
             <div id="bar">
                 <div id="categories">
                     ${
-                        !this._hoverSupport && this._menuExpanded && this._idx >= 0
+                        !this._landscapeSupport && this._menuExpanded && this._idx >= 0
                         ? html`
                             <demo-icon
                                 class="icon-bar"
@@ -192,7 +193,7 @@ export class DemoNavi extends MultiMediaComponent {
                         `
                         : html`<slot name="logo"></slot>`
                     }
-                    ${ !this._hoverSupport ? html`` : repeat(
+                    ${ !this._landscapeSupport ? html`` : repeat(
                         this._config,
                         (item, idx)=>idx,
                         (item, idx) => html`
@@ -209,7 +210,7 @@ export class DemoNavi extends MultiMediaComponent {
                 <div id="auxiliaries">
                     <slot name="auxiliaries"></slot>
                     ${
-                        this._hoverSupport
+                        this._landscapeSupport
                         ? html``
                         : html`
                             <demo-icon
@@ -274,32 +275,28 @@ export class DemoNavi extends MultiMediaComponent {
         `;
         const htmlBg = html`
             ${
-                this._hoverSupport
+                this._landscapeSupport
                 ? html`
                     <div
                         class="backdrop ${this._idx < 0 ? '' : 'active'}"
                         @mouseenter="${() => this._onMouseEnterBackdrop()}"
                     ></div>`
-                : html`<div id="bg-expended" class="${this._menuExpanded ? 'visible' : 'hidden'}"></div>`
+                : html``
             }
         `;
 
+        const expendedOnLandscape = this._landscapeSupport && this._idx >= 0;
+        const expendedOnPortrait = !this._landscapeSupport && this._menuExpanded;
         return html`
-            <div id="container" class="z-idx-backdrop-above">
+            <div id="container" class="z-idx-backdrop-above ${expendedOnPortrait?'full-height':''}">
 
                 <div id="head">
                     ${ htmlBar }
                 </div>
 
-                <div id="body">
-                    ${
-                   this._idx>=0||this._menuExpanded
-                        ? 
-                            this._hoverSupport
-                            ? htmlTable
-                            : ( this._idx < 0 ? htmlList : htmlSubList )        
-                        : html``
-                    }
+                <div id="body" class="${expendedOnPortrait?'rest':''}">
+                    ${ expendedOnLandscape ? htmlTable : html`` }
+                    ${ expendedOnPortrait ? ( this._idx < 0 ? htmlList : htmlSubList ) : html``}
                 </div>
                 
             </div>
@@ -310,12 +307,12 @@ export class DemoNavi extends MultiMediaComponent {
         this._idx = -1;
     }
     _onMouseEnterBarCategoryItem = idx => {
-        if (this._hoverSupport) {
+        if (this._landscapeSupport) {
             this._idx = idx;
         }
     };
     _onClickBarCategoryItem = idx => {
-        if (!this._hoverSupport) {
+        if (!this._landscapeSupport) {
             this._idx = idx;
         }
     }
@@ -326,7 +323,7 @@ export class DemoNavi extends MultiMediaComponent {
         }
     }
     _onMouseEnterBackdrop = () => {
-        if (this._hoverSupport) {
+        if (this._landscapeSupport) {
             this._idx = -1;
         }
     };
