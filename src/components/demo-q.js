@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { EzComponent } from '../utils/components.js';
 import { DemoIcon } from './demo-icon.js';
+import { _category } from "../utils/icons.js";
 
 export class DemoQ extends EzComponent {
     static styles = [
@@ -51,7 +52,7 @@ export class DemoQ extends EzComponent {
     render() {
         return html`
             <div id="container">
-                <demo-icon category="tabler" name="queto-op" filled></demo-icon>
+                <demo-icon category="${_category}" name="queto-op" filled></demo-icon>
                 <p><slot name="content"></slot></p>
                 <i>--<slot name="author"></slot></i>
             </div>

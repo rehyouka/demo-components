@@ -1,5 +1,5 @@
 // functions
-export { getIcon } from './icons.js'
+export { fetchSvg, _category } from './utils/icons.js';
 export { isCookieSettingsEnabled } from './components/demo-cookie.js';
 
 // styles

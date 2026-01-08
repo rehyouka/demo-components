@@ -1,7 +1,7 @@
 import {css} from 'lit';
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import {EzComponent} from '../utils/components.js';
-import {getIcon} from "../icons.js";
+import {fetchSvg} from '../utils/icons.js';
 
 export class DemoIcon extends EzComponent {
     static styles = [
@@ -23,7 +23,7 @@ export class DemoIcon extends EzComponent {
     constructor() {
         super('demo-icon');
         this.name = '';
-        this.category = 'heroicons';
+        this.category = '';
         this.filled = false;
         this._svg = '';
     }
@@ -37,7 +37,7 @@ export class DemoIcon extends EzComponent {
             changedProperties.has('name') ||
             changedProperties.has('filled')
         ) {
-            this._svg = getIcon(this.category, this.name, this.filled ? 'filled' : 'outline');
+            fetchSvg(this.category, this.name, this.filled).then(svg=>this._svg=svg);
         }
     }
 }

@@ -4,6 +4,7 @@ import { MultiMediaComponent } from '../utils/components.js';
 import { DemoA } from './demo-a.js';
 import { DemoIcon } from './demo-icon.js';
 import { backdropStyles } from '../styles/backdrop.js';
+import { _category } from "../utils/icons.js";
 
 export class DemoNavi extends MultiMediaComponent {
     static styles = [
@@ -187,6 +188,7 @@ export class DemoNavi extends MultiMediaComponent {
                         ? html`
                             <demo-icon
                                 class="icon-bar"
+                                category="${_category}"
                                 name="arrow-left"
                                 @click="${()=>this._onClickIconBack()}"
                             ></demo-icon>
@@ -215,6 +217,7 @@ export class DemoNavi extends MultiMediaComponent {
                         : html`
                             <demo-icon
                                 class="icon-bar"
+                                category="${_category}"
                                 name="${this._menuExpanded?'x-mark':'bars-3'}"
                                 @click="${()=>this._onClickIconMenu()}"
                             ></demo-icon>`
