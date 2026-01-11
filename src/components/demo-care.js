@@ -39,12 +39,14 @@ export class DemoCare extends ConfigurableComponent {
     }
     render() {
         const bgImgName = this._config?.length ? this._config[0]?.bgImgName : '';
-        const stylesContainer = {
-            backgroundImage: `
+        const stylesContainer = {};
+        if (this.filteringColorWeak?.length && this.filteringColorStrong?.length && bgImgName?.length) {
+            stylesContainer.backgroundImage =
+            `
                 linear-gradient(to bottom, ${this.filteringColorWeak}, ${this.filteringColorStrong})
-                , url(/imgs/office.png)
-            `,
-        };
+                , url(/imgs/${bgImgName})
+            `;
+        }
         return html`
             <div id="container" style=${styleMap(stylesContainer)}>
                 <div id="wrap-text">
