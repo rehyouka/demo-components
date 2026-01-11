@@ -42,7 +42,7 @@ export class DemoCare extends ConfigurableComponent {
         const stylesContainer = {
             backgroundImage: `
                 linear-gradient(to bottom, ${this.filteringColorWeak}, ${this.filteringColorStrong})
-                , url(/assets/imgs/office.png)
+                , url(/imgs/office.png)
             `,
         };
         return html`

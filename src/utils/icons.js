@@ -7,7 +7,7 @@ export async function fetchSvg(category, name, filled=false) {
     if (category?.length && name?.length) {
         const key = _buildKey(category, name, filled);
         if (_caches.has(key)) return _caches.get(key);
-        const res = await fetch(`/assets/icons/${key}.svg`);
+        const res = await fetch(`/icons/${key}.svg`);
         const svg = await res?.text();
         if (res?.ok && svg?.length) {
             _caches.set(key, svg);
