@@ -22,3 +22,4 @@ export { DemoLayout } from './components/demo-layout.js';
 export { DemoGallery } from './components/demo-gallery.js';
 export { DemoCookie} from './components/demo-cookie.js';
 export { DemoNavi } from './components/demo-navi.js';
+export { DemoCard } from './components/demo-card.js';
