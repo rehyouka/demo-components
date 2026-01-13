@@ -1,6 +1,7 @@
 // functions
 export { fetchSvg, _category } from './utils/icons.js';
 export { del, get, post, put } from './utils/http.js';
+export { toggleTheme } from './utils/theme.js';
 export { isCookieSettingsEnabled } from './components/demo-cookie.js';
 
 // styles
