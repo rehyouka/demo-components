@@ -9,7 +9,7 @@ function isDarkOS() {
 function isDarkSetted() {
     return localStorage.getItem(_key_ls) === 'true';
 }
-function isDarkPreferred() {
+export function isDarkPreferred() {
     return isDarkSetted() || isDarkOS();
 }
 function isDark() {
@@ -22,9 +22,29 @@ export function toggleTheme(force) {
     } else {
         dark = !!force;
     }
+    document.body.dispatchEvent(new ThemeToggleEvent(dark));
     document.body.classList.toggle(_dark, dark);
     localStorage.setItem(_key_ls, `${dark}`);
     return dark;
+}
+
+export function addThemeListener(callback) {
+    document.body.addEventListener(ThemeToggleEvent.TYPE, callback);
+}
+
+export function removeThemeListener(callback) {
+    document.body.removeEventListener(ThemeToggleEvent.TYPE, callback);
+}
+
+export class ThemeToggleEvent extends CustomEvent {
+    static TYPE = 'demo-theme-toggle';
+    constructor(dark) {
+        super(ThemeToggleEvent.TYPE, {
+            detail: { dark: !!dark, },
+            bubbles: false,
+            cancelable: true
+        });
+    }
 }
 
 /* --- self-invocation --- */

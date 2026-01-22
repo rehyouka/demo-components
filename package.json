@@ -1,7 +1,7 @@
 {
   "name": "demo-components",
   "private": true,
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "exports": {
     ".": {
@@ -26,5 +26,10 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "dependencies": {
+    "dompurify": "^3.3.1",
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.0"
   }
 }

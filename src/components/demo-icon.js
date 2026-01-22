@@ -1,7 +1,7 @@
 import {css} from 'lit';
-import {unsafeHTML} from 'lit/directives/unsafe-html.js';
 import {EzComponent} from '../utils/components.js';
 import {fetchSvg} from '../utils/icons.js';
+import {safeHTML} from '../utils/xss.js';
 
 export class DemoIcon extends EzComponent {
     static styles = [
@@ -29,7 +29,7 @@ export class DemoIcon extends EzComponent {
     }
 
     render() {
-        return unsafeHTML(this._svg);
+        return safeHTML(this._svg);
     }
 
     willUpdate(changedProperties) {
