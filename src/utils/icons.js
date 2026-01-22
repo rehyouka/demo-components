@@ -1,7 +1,3 @@
-import { svgs } from './xss.js';
-
-const _svg_default = svgs('<svg viewBox="0 0 24 24"></svg>');
-
 const _caches = new Map();
 export const _category = '_';
 function _buildKey(category, name, filled) {
@@ -14,14 +10,11 @@ export async function fetchSvg(category, name, filled=false) {
         const res = await fetch(`/icons/${key}.svg`);
         const svg = await res?.text();
         if (res?.ok && svg?.length) {
-            const trustedSvg = svgs(svg);
-            if (trustedSvg instanceof TrustedHTML) {
-                _caches.set(key, trustedSvg);
-                return trustedSvg;
-            }
+            _caches.set(key, svg);
+            return svg;
         }
     }
-    return _svg_default;
+    return '<svg viewBox="0 0 24 24"></svg>';
 }
 
 /* -- preset icons --- */

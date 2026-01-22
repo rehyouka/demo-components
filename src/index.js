@@ -1,6 +1,8 @@
 // functions
+export { fetchSvg, _category } from './utils/icons.js';
 export { del, get, post, put } from './utils/http.js';
 export { toggleTheme } from './utils/theme.js';
+export { isCookieSettingsEnabled } from './components/demo-cookie.js';
 
 // styles
 export { backdropStyles } from './styles/backdrop.js';
@@ -23,4 +25,3 @@ export { DemoGallery } from './components/demo-gallery.js';
 export { DemoCookie} from './components/demo-cookie.js';
 export { DemoNavi } from './components/demo-navi.js';
 export { DemoCard } from './components/demo-card.js';
-export { DemoMd } from './components/demo-md.js';

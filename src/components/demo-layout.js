@@ -24,11 +24,14 @@ export class DemoLayout extends MultiMediaComponent {
     constructor() {
         super('demo-layout');
         this.weightHead = this.weightBody = 1;
+        console.log('william constructor()', this.weightHead, this.weightBody);
     }
     connectedCallback() {
         super.connectedCallback();
+        console.log('william connectedCallback()', this.weightHead, this.weightBody)
     }
     render() {
+        console.log('william render()', this.weightHead, this.weightBody)
         const directionClass = this._landscapeSupport ? 'row' : 'col';
         const headStyle = { flex: this.weightHead, };
         const bodyStyle = { flex: this.weightBody, };
