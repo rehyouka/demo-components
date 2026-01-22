@@ -1,6 +1,7 @@
 import {defineConfig} from 'vite';
 import {fileURLToPath} from 'url';
 import {resolve} from 'path';
+import {visualizer} from 'rollup-plugin-visualizer';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
@@ -36,5 +37,12 @@ export default defineConfig({
 
                                     outDir: 'dist',
                                     emptyOutDir: true
-                                }
+                                },
+                                plugins: [
+                                    visualizer({
+                                        open: true,
+                                        gzipSize: true,
+                                        brotliSize: true,
+                                   })
+                                ]
                             });
