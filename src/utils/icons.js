@@ -15,10 +15,8 @@ export async function fetchSvg(category, name, filled=false) {
         const svg = await res?.text();
         if (res?.ok && svg?.length) {
             const trustedSvg = svgs(svg);
-            if (trustedSvg instanceof TrustedHTML) {
-                _caches.set(key, trustedSvg);
-                return trustedSvg;
-            }
+            _caches.set(key, trustedSvg);
+            return trustedSvg;
         }
     }
     return _svg_default;
