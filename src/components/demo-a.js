@@ -1,6 +1,7 @@
 import { EzComponent } from "../utils/components.js";
 import { css, html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
+import { ifDefined } from "lit/directives/if-defined.js";
 
 export class DemoA extends EzComponent {
     static styles = [
@@ -73,7 +74,6 @@ export class DemoA extends EzComponent {
         this.underlined = false;
         this.smooth = false;
         this.newTab = false;
-        this.download = false;
     }
     render() {
         const aClassMap = {
@@ -81,32 +81,17 @@ export class DemoA extends EzComponent {
             underlined: this.underlined,
             smooth: this.smooth,
         };
-        return this.newTab
-               ?
-               html`
-                   <a 
-                           class=${classMap(aClassMap)} 
-                           href="${this.href}" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           ?download=${this.download?.length}
-                           .download=${this.download??''}
-                   >
-                       <slot></slot>
-                   </a>
-               `
-               :
-               html`
-                   <a 
-                           class=${classMap(aClassMap)} 
-                           href="${this.href}"
-                           ?download=${this.download?.length}
-                           .download=${this.download??''}
-                   >
-                       <slot></slot>
-                   </a>
-               `
-            ;
+        return html`
+            <a
+                    class=${classMap(aClassMap)}
+                    href="${this.href}"
+                    target=${ifDefined(this.newTab?'_blank':undefined)}
+                    rel=${ifDefined(this.newTab?'noopener noreferrer':undefined)}
+                    download=${ifDefined(this.download)}
+            >
+                <slot></slot>
+            </a>
+        `;
     }
 }
 customElements.define('demo-a', DemoA);

@@ -22,7 +22,8 @@ export default defineConfig({
                                             'lit/directives/unsafe-html.js',
                                             'lit/directives/class-map.js',
                                             'lit/directives/style-map.js',
-                                            'lit/directives/repeat.js'
+                                            'lit/directives/repeat.js',
+                                            'lit/directives/if-defined.js',
                                         ],
                                         output: {
                                             globals: {
@@ -30,7 +31,8 @@ export default defineConfig({
                                                 'lit/directives/unsafe-html.js': 'Lit',
                                                 'lit/directives/class-map.js': 'Lit',
                                                 'lit/directives/style-map.js': 'Lit',
-                                                'lit/directives/repeat.js': 'Lit'
+                                                'lit/directives/repeat.js': 'Lit',
+                                                'lit/directives/if-defined.js': 'Lit',
                                             }
                                         }
                                     },

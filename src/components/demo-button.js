@@ -38,7 +38,7 @@ export class DemoButton extends MultiMediaComponent {
 
             .bordered, .bordering {
                 border-style: solid;
-                border-width: 0.25em;
+                border-width: 0.15em;
             }
 
             .bordering {
@@ -50,7 +50,7 @@ export class DemoButton extends MultiMediaComponent {
             }
 
             .rounded {
-                border-radius: 1.2em;
+                border-radius: 9999px;
             }
 
             .filled, button.color-flippable.hoverable:hover, button:not(.hoverable).color-flippable.pressable {
