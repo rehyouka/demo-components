@@ -1,9 +1,11 @@
 // functions
 export { del, get, post, put } from './utils/http.js';
 export { toggleTheme } from './utils/theme.js';
+export { anchorId } from './utils/formats.js';
 
 // styles
 export { backdropStyles } from './styles/backdrop.js';
+export { anchorStyles } from './styles/anchor.js';
 
 // components
 export { DemoA } from './components/demo-a.js';
