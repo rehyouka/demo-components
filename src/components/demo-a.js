@@ -66,7 +66,6 @@ export class DemoA extends EzComponent {
         smooth: { type: Boolean, },
         newTab: { attribute: 'new-tab', type: Boolean, },
         download: {},
-        anchored: { type: Boolean, },
     };
     constructor() {
         super('demo-a');
@@ -75,7 +74,6 @@ export class DemoA extends EzComponent {
         this.underlined = false;
         this.smooth = false;
         this.newTab = false;
-        this.anchored = false;
     }
     render() {
         const aClassMap = {
@@ -86,12 +84,12 @@ export class DemoA extends EzComponent {
         return html`
             <a
                     class=${classMap(aClassMap)}
-                    href="${this.anchored?'#':''}${this.href}"
+                    href="${this.href}"
                     target=${ifDefined(this.newTab?'_blank':undefined)}
                     rel=${ifDefined(this.newTab?'noopener noreferrer':undefined)}
                     download=${ifDefined(this.download)}
             >
-                <slot>${this.anchored?'#':''}</slot>
+                <slot></slot>
             </a>
         `;
     }

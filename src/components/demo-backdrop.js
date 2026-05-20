@@ -1,7 +1,7 @@
 import { css } from 'lit';
 
-export const backdropStyles = css`
-    .backdrop {
+export const DemoBackdropStyles = css`
+    .demo-backdrop {
         position: fixed;
         z-index: 25;
         top: 0;
@@ -16,11 +16,11 @@ export const backdropStyles = css`
         transition: opacity 0.3s ease, visibility 0.3s;
         cursor: default;
     }
-    .backdrop.active {
+    .demo-backdrop.active {
         visibility: visible;
         opacity: 1;
     }
-    .z-idx-backdrop-above {
+    .demo-backdrop-z-idx-above {
         position: relative;
         z-index: 26;
     }

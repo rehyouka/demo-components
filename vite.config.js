@@ -15,6 +15,7 @@ export default defineConfig({
                                         },
                                         formats: ['es']
                                     },
+                                    cssCodeSplit: false,
 
                                     rollupOptions: {
                                         external: [

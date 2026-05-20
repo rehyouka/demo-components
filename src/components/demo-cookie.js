@@ -2,7 +2,7 @@ import { ConfigurableComponent } from "../utils/components.js";
 import { css, html } from 'lit';
 import { DemoA } from "./demo-a.js";
 import { DemoButton } from "./demo-button.js";
-import { backdropStyles } from '../styles/backdrop.js';
+import { DemoBackdropStyles } from './demo-backdrop.js';
 
 const LOCAL_STORAGE_KEY = 'demo-enabled-cookie-settings';
 export function isCookieSettingsEnabled() {
@@ -12,7 +12,7 @@ export function isCookieSettingsEnabled() {
 export class DemoCookie extends ConfigurableComponent {
     static styles = [
         ... ConfigurableComponent.styles,
-        backdropStyles,
+        DemoBackdropStyles,
         css`
             :host {
                 display: block;
@@ -72,7 +72,7 @@ export class DemoCookie extends ConfigurableComponent {
         const enabled = isCookieSettingsEnabled();
         this.classList.toggle('bookmark', !this._expanded);
         return html`
-            <div id="container" class="z-idx-backdrop-above">
+            <div id="container" class="demo-backdrop-z-idx-above">
                 ${ this._expanded
                     ? 
                         html`
@@ -99,7 +99,7 @@ export class DemoCookie extends ConfigurableComponent {
                         `
                 }
             </div>
-            <div class="backdrop ${this._expanded?'active':''}" @click="${this.onClickBackdrop}"></div>
+            <div class="demo-backdrop ${this._expanded?'active':''}" @click="${this.onClickBackdrop}"></div>
         `;
     }
     onClickBookmark() {

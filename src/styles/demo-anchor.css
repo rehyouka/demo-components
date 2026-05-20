@@ -1,0 +1,11 @@
+h2.demo-anchor > a {
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    margin-right: 5px;
+}
+h2.demo-anchor:hover > a {
+    opacity: 1;
+}

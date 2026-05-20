@@ -3,13 +3,13 @@ import { repeat } from 'lit/directives/repeat.js';
 import { MultiMediaComponent } from '../utils/components.js';
 import { DemoA } from './demo-a.js';
 import { DemoIcon } from './demo-icon.js';
-import { backdropStyles } from '../styles/backdrop.js';
+import { DemoBackdropStyles } from './demo-backdrop.js';
 import { _category } from "../utils/icons.js";
 
 export class DemoNavi extends MultiMediaComponent {
     static styles = [
         ...MultiMediaComponent.styles,
-        backdropStyles,
+        DemoBackdropStyles,
         css`
             :host {
                 display: block;
@@ -281,7 +281,7 @@ export class DemoNavi extends MultiMediaComponent {
                 this._landscapeSupport
                 ? html`
                     <div
-                        class="backdrop ${this._idx < 0 ? '' : 'active'}"
+                        class="demo-backdrop ${this._idx < 0 ? '' : 'active'}"
                         @mouseenter="${() => this._onMouseEnterBackdrop()}"
                     ></div>`
                 : html``
@@ -291,7 +291,7 @@ export class DemoNavi extends MultiMediaComponent {
         const expendedOnLandscape = this._landscapeSupport && this._idx >= 0;
         const expendedOnPortrait = !this._landscapeSupport && this._menuExpanded;
         return html`
-            <div id="container" class="z-idx-backdrop-above ${expendedOnPortrait?'full-height':''}">
+            <div id="container" class="demo-backdrop-z-idx-above ${expendedOnPortrait?'full-height':''}">
 
                 <div id="head">
                     ${ htmlBar }
