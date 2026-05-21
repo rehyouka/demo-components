@@ -1,4 +1,4 @@
-h2.demo-anchor > a {
+h2.demo-title > a {
     text-decoration: none;
     opacity: 0;
     transition: opacity 0.2s ease, color 0.2s ease;
@@ -6,6 +6,6 @@ h2.demo-anchor > a {
     user-select: none;
     margin-right: 5px;
 }
-h2.demo-anchor:hover > a {
+h2.demo-title:hover > a {
     opacity: 1;
 }
