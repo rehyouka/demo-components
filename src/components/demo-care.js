@@ -7,11 +7,19 @@ export class DemoCare extends ConfigurableComponent {
     static styles = [
         ... ConfigurableComponent.styles,
         css`
+            :host {
+                --care-max-width: var(--care-max-width-x, inherit);
+            }
             #container {
                 background-size: cover;
                 background-position: center;
                 color: inherit;
                 padding: 1em;
+            }
+            #container > div {
+                margin: 0 auto;
+                width: 100%;
+                max-width: var(--care-max-width);
             }
             #wrap-text > h4 {
                 margin-top: 1em;
