@@ -1,41 +1,26 @@
-import { MultiMediaComponent } from "../utils/components.js";
+import { EzComponent } from "../utils/components.js";
 import { css, html } from 'lit';
-import { styleMap } from 'lit/directives/style-map.js';
 
-export class DemoLayout extends MultiMediaComponent {
+export class DemoLayout extends EzComponent {
     static styles = [
-        ...MultiMediaComponent.styles,
+        ...EzComponent.styles,
         css`
             :host { display: block; }
-            :host, #container { width: 100%; height: 100%; }
-            #container { display: flex; }
-            #container.row { flex-direction: row; }
-            #container.row > div { height: 100%; }
-            #container.col { flex-direction: column; }
-            #container.col > div { width: 100%; }
-            #container > div { overflow: hidden; }
+            #container { display: flex; flex-direction: row }
+            @media (max-width: 768px) { #container { flex-direction: column; } }
         `,
     ];
     static properties = {
-        ...MultiMediaComponent.properties,
-        weightHead: { attribute: 'weight-head', type: Number },
-        weightBody: { attribute: 'weight-body', type: Number },
+        ...EzComponent.properties,
     };
     constructor() {
         super('demo-layout');
-        this.weightHead = this.weightBody = 1;
-    }
-    connectedCallback() {
-        super.connectedCallback();
     }
     render() {
-        const directionClass = this._landscapeSupport ? 'row' : 'col';
-        const headStyle = { flex: this.weightHead, };
-        const bodyStyle = { flex: this.weightBody, };
         return html`
-            <div id="container" class="box ${directionClass}">
-                <div id="head" class="box" style=${styleMap(headStyle)}><slot name="head"></slot></div>
-                <div id="body" class="box" style=${styleMap(bodyStyle)}><slot name="body"></slot></div>
+            <div id="container" class="centered-flex">
+                <slot name="lt"></slot>
+                <slot name="rb"></slot>
             </div>
         `;
     }

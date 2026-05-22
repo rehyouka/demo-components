@@ -1,6 +1,7 @@
 import { css, html } from 'lit';
 import { ConfigurableComponent } from "../utils/components.js";
 import { DemoButton } from "./demo-button.js";
+import { DemoLayout } from "./demo-layout.js";
 
 export class DemoSignboard extends ConfigurableComponent {
     static styles = [
@@ -38,12 +39,13 @@ export class DemoSignboard extends ConfigurableComponent {
                 word-break: break-word;
                 white-space: normal;
             }
-            #buttons {
-                gap: 2em;
+            demo-layout {
                 margin-top: 3em;
+                width: 100%;
             }
-            #buttons > demo-button {
+            demo-button {
                 font-size: 1.5em;
+                padding: 0.5em 1em;
             }
             #slogan-intro > span {
                 color: var(--signboard-color-underline);
@@ -55,8 +57,7 @@ export class DemoSignboard extends ConfigurableComponent {
             }
             @media (max-width: 768px) {
                 #slogans > h1 { font-size: 2.8em; }
-                #buttons > demo-button { font-size: 1.1em; }
-                #buttons { gap: 1em; }
+                demo-button { font-size: 1.2em; width: 100% }
             }
         `
     ];
@@ -75,10 +76,27 @@ export class DemoSignboard extends ConfigurableComponent {
                     <h1 id="slogan-keyword"><b>${this._config[0]?.sloganKeyword},</b></h1>
                     <h1 id="slogan-intro"><b>${this._config[0]?.sloganIntro}</b> <span>_</span></h1>
                 </div>
-                <div id="buttons" class="centered-flex">
-                    <demo-button id="button-start" bordered rounded color-flippable>${this._config[0]?.buttonStart}</demo-button>
-                    <demo-button id="button-more" bordered rounded filled color-flippable>${this._config[0]?.buttonMore}</demo-button>
-                </div>
+                <demo-layout>
+                    <demo-button 
+                            slot="lt" 
+                            bordered 
+                            rounded 
+                            color-flippable
+                            responsive
+                    >
+                        ${this._config[0]?.buttonStart}
+                    </demo-button>
+                    <demo-button 
+                            slot="rb" 
+                            bordered 
+                            rounded 
+                            filled 
+                            color-flippable
+                            responsive
+                    >
+                        ${this._config[0]?.buttonMore}
+                    </demo-button>
+                </demo-layout>
             </div>
         `;
     }

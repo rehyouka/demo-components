@@ -13,11 +13,6 @@ export class DemoButton extends MultiMediaComponent {
                 --btn-color-dark: var(--btn-color-dark-x, inherit);
             }
 
-            :host, #container {
-                height: unset;
-                width: unset;
-            }
-
             button {
                 padding: 0.4em 0.8em;
 
@@ -62,6 +57,10 @@ export class DemoButton extends MultiMediaComponent {
                 --btn-color-bg: var(--btn-color-light);
                 --btn-color-txt: var(--btn-color-dark);
             }
+
+            @media (max-width: 768px) {
+                button.responsive { width: 100%; }
+            }
         `,
     ];
     static properties = {
@@ -70,7 +69,8 @@ export class DemoButton extends MultiMediaComponent {
         bordering: {type: Boolean,},
         rounded: {type: Boolean,},
         filled: {type: Boolean,},
-        colorFlippable: {type: Boolean,attribute:'color-flippable',}, 
+        colorFlippable: {type: Boolean,attribute:'color-flippable',},
+        responsive: { type: Boolean, },
     };
     _buttonElement;
 
@@ -81,6 +81,7 @@ export class DemoButton extends MultiMediaComponent {
         this.rounded = false;
         this.filled = false;
         this.colorFlippable = false;
+        this.responsive = false;
     }
 
     render() {
@@ -93,6 +94,7 @@ export class DemoButton extends MultiMediaComponent {
             filled: this.filled,
             'color-flippable': this.colorFlippable,
             hoverable: this._hoverSupport,
+            responsive: this.responsive,
         };
         return html`
             <button
