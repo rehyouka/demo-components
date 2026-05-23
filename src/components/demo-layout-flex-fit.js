@@ -1,7 +1,7 @@
 import { EzComponent } from "../utils/components.js";
 import { css, html } from 'lit';
 
-export class DemoLayout extends EzComponent {
+export class DemoLayoutFlexFit extends EzComponent {
     static styles = [
         ...EzComponent.styles,
         css`
@@ -14,7 +14,7 @@ export class DemoLayout extends EzComponent {
         ...EzComponent.properties,
     };
     constructor() {
-        super('demo-layout');
+        super('demo-layout-flex-fit');
     }
     render() {
         return html`
@@ -25,4 +25,4 @@ export class DemoLayout extends EzComponent {
         `;
     }
 }
-customElements.define('demo-layout', DemoLayout);
+customElements.define('demo-layout-flex-fit', DemoLayoutFlexFit);
