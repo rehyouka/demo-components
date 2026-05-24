@@ -13,7 +13,7 @@ export class DemoChannels extends ConfigurableComponent {
             }
             #container {
                 display: flex;
-                gap: 0.5em;
+                gap: 1em;
             }
             demo-icon {
                 height: 1em;

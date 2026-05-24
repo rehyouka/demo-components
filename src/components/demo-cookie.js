@@ -54,6 +54,10 @@ export class DemoCookie extends ConfigurableComponent {
                 justify-content: flex-end;
                 gap: 0.5em;
             }
+            #container.full-width {
+                width: 100vw;
+                padding-right: 2em;
+            }
         `,
     ];
     static properties = {
@@ -72,7 +76,7 @@ export class DemoCookie extends ConfigurableComponent {
         const enabled = isCookieSettingsEnabled();
         this.classList.toggle('bookmark', !this._expanded);
         return html`
-            <div id="container" class="demo-backdrop-z-idx-above">
+            <div id="container" class="demo-backdrop-z-idx-above ${this._expanded?'full-width':''}">
                 ${ this._expanded
                     ? 
                         html`

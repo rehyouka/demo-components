@@ -24,7 +24,7 @@ export class DemoCare extends ConfigurableComponent {
             #wrap-text > h4 {
                 margin-top: 1em;
             }
-            #wrap-button {
+            #container > #wrap-button {
                 display: flex;
                 justify-content: flex-end;
                 margin-top: 2em;
@@ -62,12 +62,17 @@ export class DemoCare extends ConfigurableComponent {
                     <h4>${this._config[0]?.content}</h4>
                 </div>
                 <div id="wrap-button">
-                    <demo-button clickable bordered>
+                    <demo-button clickable bordered @click=${()=>this.onClickButton(this._config[0].link)}>
                         ${this._config[0]?.greeting}
                     </demo-button>
                 </div>
             </div>
         `;
+    }
+    onClickButton(url) {
+        if (url?.length) {
+            window.open(url, '_blank');
+        }
     }
 }
 customElements.define('demo-care', DemoCare);

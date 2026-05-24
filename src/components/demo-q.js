@@ -46,15 +46,20 @@ export class DemoQ extends EzComponent {
             }
         `,
     ];
+    static properties = {
+        ... EzComponent.properties,
+        signed: { type: Boolean },
+    };
     constructor() {
         super('demo-q');
+        this.signed = false;
     }
     render() {
         return html`
             <div id="container">
                 <demo-icon category="${_category}" name="queto-op" filled></demo-icon>
                 <p><slot name="content"></slot></p>
-                <i>--<slot name="author"></slot></i>
+                ${ this.signed ? html`<i>--<slot name="author"></slot></i>` : '' }
             </div>
         `;
     }

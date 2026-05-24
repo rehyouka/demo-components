@@ -2,6 +2,11 @@ const _exp = '(prefers-color-scheme: dark)';
 const _dark = 'dark';
 const _key_ls = 'demo-enabled-theme-dark';
 
+/**
+ * 1. JS makes it easier to debug theme toggling.
+ * 2. Another approach '@media (prefers-color-scheme: dark) { ... }' is more concise, but it is not very friendly for debugging.
+ */
+
 function isDarkOS() {
     const prefersDarkScheme = window.matchMedia(_exp);
     return prefersDarkScheme.matches;
