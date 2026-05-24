@@ -6,6 +6,13 @@ import { DemoIcon } from './demo-icon.js';
 import { DemoBackdropStyles } from './demo-backdrop.js';
 import { _category } from "../utils/icons.js";
 
+/**
+ * 1. height: 3rem;
+ * 2. It is recommended to place <demo-navi> as the last child element of <body>.
+ *      This resolves the issue where z-index fails to work properly due to new stacking contexts
+ *      created by CSS transform or animation properties.
+ *      Note that connectedCallback() will remount <demo-navi>.
+ */
 export class DemoNavi extends MultiMediaComponent {
     static styles = [
         ...MultiMediaComponent.styles,
@@ -35,9 +42,8 @@ export class DemoNavi extends MultiMediaComponent {
                 background-color: var(--navi-color-bg);
             }
             #head, #body {
-
-                padding-left: 1em;
-                padding-right: 1em;
+                padding-left: 1rem;
+                padding-right: 1rem;
                 width: 100%;
 
                 max-width: var(--navi-width-max);
@@ -70,11 +76,11 @@ export class DemoNavi extends MultiMediaComponent {
             #categories, #auxiliaries { 
                 display: flex; 
                 align-items: center; 
-                gap: 2em; 
+                gap: 2rem; 
             }
             #categories > * , #auxiliaries > * { 
-                padding-top: 1em; 
-                padding-bottom: 1em; 
+                padding-top: 1rem; 
+                padding-bottom: 1rem; 
             }
             #categories {
                 justify-content: flex-start;
@@ -86,7 +92,7 @@ export class DemoNavi extends MultiMediaComponent {
                 position: relative;
                 text-decoration: none;
                 font-weight: bold;
-                font-size: 0.75em;
+                font-size: 0.75rem;
                 box-sizing: content-box;
             }
             div.category::after {
@@ -95,7 +101,7 @@ export class DemoNavi extends MultiMediaComponent {
                 left: 0;
                 bottom: 0;
                 width: 0;
-                height: 0.15em;
+                height: 0.15rem;
                 background-color: currentColor;
                 transition: width 0.3s ease;
                 box-sizing: content-box;
@@ -107,15 +113,15 @@ export class DemoNavi extends MultiMediaComponent {
                 width: 100%;
             }
             demo-icon.icon-bar {
-                width: 1em;
+                width: 1rem;
             }
         `,
         css`
             #table {
                 display: flex;
-                padding-top: 2.5em;
-                padding-bottom: 1.5em;
-                gap: 4em;
+                padding-top: 2.5rem;
+                padding-bottom: 1.5rem;
+                gap: 4rem;
             }
             .column {
                 display: flex;
@@ -125,10 +131,10 @@ export class DemoNavi extends MultiMediaComponent {
                 color: var(--navi-color-txt-title);
             }
             h5.cell:not(:first-of-type) {
-                margin-top: 2em;
+                margin-top: 2rem;
             }
             demo-a.cell {
-                font-size: 1.6em;
+                font-size: 1.6rem;
                 font-weight: bolder;
             }
         `,
@@ -136,8 +142,8 @@ export class DemoNavi extends MultiMediaComponent {
             .list {
                 display: flex;
                 flex-direction: column;
-                gap: 1em;
-                padding: 1em 0;
+                gap: 1rem;
+                padding: 1rem 0;
             }
             .list-item {
                 color: var(--navi-color-txt);
@@ -145,15 +151,15 @@ export class DemoNavi extends MultiMediaComponent {
             .sub-list {
                 display: flex;
                 flex-direction: column;
-                gap: 0.1em;
-                padding: 0.5em 0;
+                gap: 0.1rem;
+                padding: 0.5rem 0;
             }
             .sub-list > p {
-                font-size: 1em;
+                font-size: 1rem;
                 color: var(--navi-color-txt-title);
             }
             .sub-list > demo-a {
-                font-size: 1.4em;
+                font-size: 1.4rem;
                 font-weight: bolder;
             }
         `,
@@ -178,6 +184,12 @@ export class DemoNavi extends MultiMediaComponent {
         super('demo-navi');
         this._idx = -1;
         this._menuExpanded = false;
+    }
+    connectedCallback() {
+        super.connectedCallback();
+        if (this.parentNode !== document.body) {
+            document.body.appendChild(this);
+        }
     }
     render() {
         const htmlBar = html`
