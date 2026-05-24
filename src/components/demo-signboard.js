@@ -1,7 +1,7 @@
 import { css, html } from 'lit';
 import { ConfigurableComponent } from "../utils/components.js";
 import { DemoButton } from "./demo-button.js";
-import { DemoLayout } from "./demo-layout.js";
+import { DemoLayoutFlexFit } from "./demo-layout-flex-fit.js";
 
 export class DemoSignboard extends ConfigurableComponent {
     static styles = [
@@ -32,6 +32,7 @@ export class DemoSignboard extends ConfigurableComponent {
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
+                gap: 1em;
             }
             #slogans > h1 {
                 font-size: 4.5em;
@@ -39,7 +40,7 @@ export class DemoSignboard extends ConfigurableComponent {
                 word-break: break-word;
                 white-space: normal;
             }
-            demo-layout {
+            demo-layout-flex-fit {
                 margin-top: 3em;
                 width: 100%;
             }
@@ -57,7 +58,7 @@ export class DemoSignboard extends ConfigurableComponent {
             }
             @media (max-width: 768px) {
                 #slogans > h1 { font-size: 2.8em; }
-                demo-button { font-size: 1.2em; width: 100% }
+                demo-button { font-size: 1.2em; width: 100%; padding: 0.5em 0; }
             }
         `
     ];
@@ -74,17 +75,18 @@ export class DemoSignboard extends ConfigurableComponent {
             <div id="container">
                 <div id="slogans">
                     <h1 id="slogan-keyword"><b>${this._config[0]?.sloganKeyword},</b></h1>
-                    <h1 id="slogan-intro"><b>${this._config[0]?.sloganIntro}</b> <span>_</span></h1>
+                    <h2 id="slogan-intro"><b>${this._config[0]?.sloganIntro}</b> <span>_</span></h2>
                 </div>
-                <demo-layout>
+                <demo-layout-flex-fit>
                     <demo-button 
                             slot="lt" 
                             bordered 
                             rounded 
                             color-flippable
                             responsive
+                            @click="${()=>this.onClickButton(this._config[0]?.buttonStart?.link)}"
                     >
-                        ${this._config[0]?.buttonStart}
+                        ${this._config[0]?.buttonStart?.desc}
                     </demo-button>
                     <demo-button 
                             slot="rb" 
@@ -93,12 +95,18 @@ export class DemoSignboard extends ConfigurableComponent {
                             filled 
                             color-flippable
                             responsive
+                            @click="${()=>this.onClickButton(this._config[0]?.buttonMore?.link)}"
                     >
-                        ${this._config[0]?.buttonMore}
+                        ${this._config[0]?.buttonMore?.desc}
                     </demo-button>
-                </demo-layout>
+                </demo-layout-flex-fit>
             </div>
         `;
+    }
+    onClickButton(url) {
+        if (url?.length) {
+            window.location.href = url;
+        }
     }
 }
 
